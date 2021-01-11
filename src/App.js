@@ -9,7 +9,14 @@ import "./App.css";
 const Hello = (props) => <h3>{props.title}</h3>;
 
 class Counter extends Component {
-  state = { count: 1 };
+  constructor() {
+    super();
+    this.state = { count: 1 };
+
+    setInterval(() => {
+      this.setState({ count: this.state.count + 1 });
+    }, 1000);
+  }
   render() {
     return <span>{this.state.count}</span>;
   }
