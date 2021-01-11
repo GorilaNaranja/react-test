@@ -8,6 +8,16 @@ import "./App.css";
 
 const Hello = (props) => <h3>{props.title}</h3>;
 
+class Counter extends Component {
+  constructor() {
+    super();
+    this.state = { count: 1 };
+  }
+  render() {
+    return <span>{this.state.count}</span>;
+  }
+}
+
 class Hola extends Component {
   render() {
     return (
@@ -56,6 +66,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Counter />
         <Hello title="Component from function" />
         <Hola title="Component from class" />
         <Text
