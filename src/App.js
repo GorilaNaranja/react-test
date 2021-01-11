@@ -16,16 +16,16 @@ class Hola extends Component {
 
 class Text extends Component {
   render() {
-    const info = this.props.isActive ? "Show info" : "Dont show info";
-    const mappedAges = this.props.ages.map((age) => age * 2);
+    const { isActive, ages, text, number, car } = this.props;
+    const info = isActive ? "Show info" : "Dont show info";
+    const mappedAges = ages.map((age) => age * 2);
     return (
       <div>
-        <p>{this.props.text}</p>
-        <p>{this.props.number}</p>
+        <p>{text}</p>
+        <p>{number}</p>
         <p>{info}</p>
         <p>{mappedAges.join(", ")}</p>
-        <p>{this.props.car.marca}</p>
-
+        <p>{car.marca}</p>
       </div>
     );
   }
