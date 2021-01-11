@@ -9,10 +9,7 @@ import "./App.css";
 const Hello = (props) => <h3>{props.title}</h3>;
 
 class Counter extends Component {
-  constructor() {
-    super();
-    this.state = { count: 1 };
-  }
+  state = { count: 1 };
   render() {
     return <span>{this.state.count}</span>;
   }
