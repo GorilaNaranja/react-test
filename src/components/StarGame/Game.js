@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { utils } from '../utils/utils';
+import { utils } from '../../utils/utils';
 
 import NumberKeyboard from './NumberKeyboard';
 import StarsDisplay from './StarsDisplay';

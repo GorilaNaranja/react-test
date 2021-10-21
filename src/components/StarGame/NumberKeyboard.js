@@ -1,4 +1,4 @@
-import { colors } from '../utils/utils';
+import { colors } from '../../utils/utils';
 
 const NumberKeyboard = (props) => (
   <button

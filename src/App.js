@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
 import './App.css';
-import Game from './components/Game';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home/Home';
+import StarMatch from './components/StarGame/StarMatch';
 
 function App() {
   return (
-    <div className='App'>
-      <StarMatch></StarMatch>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path='/home'>
+          <Home></Home>
+        </Route>
+        <Route path='/star-game'>
+          <StarMatch></StarMatch>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
-/* 
-*****************************************************
-REACT EXAMPLE STARMATCH GAME
-This is a simple game to practice with react concepts
-*****************************************************
-*/
-
-// STAR MATCH COMPONENT
-const StarMatch = () => {
-  const [gameId, setGameId] = useState(1);
-  return <Game key={gameId} startNewGame={() => setGameId(gameId + 1)} />;
-};
 
 export default App;
