@@ -15,13 +15,10 @@ const getCharacters = async () => {
   return response.data;
 };
 
-// const getCharacterById = async (id) => {
-//   const response = await axios.get(
-//     `${URL}/character/${id}?page=1&limit=10`,
-//     headers
-//   );
-//   return response.data;
-// };
+const getCharacterById = async (id) => {
+  const response = await api.get(`/character/${id}`);
+  return response.data;
+};
 
 // const getBooks = async () => {
 //   const response = await axios.get(`${URL}/book?page=1&limit=10`, headers);
@@ -36,4 +33,4 @@ const getCharacters = async () => {
 //   return response.data;
 // };
 
-export { getCharacters /*getCharacterById, getBooks, getBookById*/ };
+export { getCharacters, getCharacterById /*, getBooks, getBookById*/ };
