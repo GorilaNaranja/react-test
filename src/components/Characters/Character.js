@@ -15,44 +15,17 @@ const Character = ({ character }) => {
           className='card-img-top'
           alt='Character-profile'
         />
-        <div className='card-title character-info accordion' id={character._id}>
-          <div className='accordion-item'>
-            <h2 className='accordion-header' id={character._id}>
-              <button
-                className='accordion-button'
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target={`#collapse-${character._id}`}
-                aria-expanded='false'
-                aria-controls={`collapse-${character._id}`}
-              >
-                {character.name}
-              </button>
-            </h2>
-            <div
-              id={`collapse-${character._id}`}
-              className='accordion-collapse collapse show'
-              aria-labelledby={character._id}
-              data-bs-parent={`#accordion-${character._id}`}
-            >
-              <div className='accordion-body'>
-                birth: {character.birth}
-                Death: {character.death}
-                Gender: {character.gender}
-                Hair: {character.hair}
-                Race: {character.race}
-                Realm: {character.realm}
-                Spouse: {character.spouse}
-              </div>
-            </div>
-          </div>
+        <div className='card-body'>
+          <p className='card-title text-center fs-4'>{character.name}</p>
+          <p className='fw-light'>
+            {character.race} - {character.gender}
+          </p>
         </div>
-        <div className='card-body d-flex justify-content-between'>
-          <a href={character.wikiUrl} className='btn btn-primary'>
+        <div className='card-footer d-grid gap-2 text-center'>
+          <a href={character.wikiUrl} className='btn btn-primary fs-9'>
             See Wiki
           </a>
-
-          <button className='btn btn-primary' onClick={visitDetails}>
+          <button className='btn btn-secondary' onClick={visitDetails}>
             See Details
           </button>
         </div>
