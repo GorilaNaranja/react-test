@@ -8,27 +8,24 @@ const Character = ({ character }) => {
   };
 
   return (
-    <div className='container'>
-      <div className='card'>
-        <img
-          src='https://bit.ly/30VFZnD'
-          className='card-img-top'
-          alt='Character-profile'
-        />
-        <div className='card-body'>
-          <p className='card-title text-center fs-4'>{character.name}</p>
-          <p className='fw-light'>
-            {character.race} - {character.gender}
-          </p>
-        </div>
-        <div className='card-footer d-grid gap-2 text-center'>
-          <a href={character.wikiUrl} className='btn btn-primary fs-9'>
-            See Wiki
-          </a>
-          <button className='btn btn-secondary' onClick={visitDetails}>
-            See Details
-          </button>
-        </div>
+    <div className='card'>
+      <div className='card-body bg-light'>
+        <p className='card-title text-center fs-4 text-truncate'>
+          {character.name}
+        </p>
+      </div>
+      <div className='card-body'>
+        <p className='fw-light'>
+          {character.race} - {character.gender}
+        </p>
+      </div>
+      <div className='card-footer d-grid gap-2 text-center'>
+        <a href={character.wikiUrl} className='btn btn-primary fs-9'>
+          See Wiki
+        </a>
+        <button className='btn btn-secondary' onClick={visitDetails}>
+          See Details
+        </button>
       </div>
     </div>
   );
