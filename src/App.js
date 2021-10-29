@@ -6,6 +6,7 @@ import StarMatch from './components/StarGame/StarMatch';
 import Characters from './components/Characters/Characters';
 import CharacterDetail from './components/Characters/CharacterDetail';
 import Contact from './components/Contact/Contact';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path='/contact'>
           <Contact />
+        </Route>
+        <Route>
+          <PageNotFound />
         </Route>
       </Switch>
     </Router>
