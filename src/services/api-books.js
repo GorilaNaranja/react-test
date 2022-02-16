@@ -20,9 +20,19 @@ const createBook = async (book) => {
   return response.data;
 };
 
+const editBook = async (id, book) => {
+  const response = await api.put(`/books/${id}`, book);
+  return response.data;
+};
+
 const deleteBook = async (id) => {
   const response = await api.delete(`/books/${id}`);
   return response.data;
 };
 
-export { getBooks, getBookById, createBook, deleteBook };
+const getAuthors = async () => {
+  const response = await api.get(`/authors`);
+  return response.data;
+};
+
+export { getBooks, getBookById, createBook, editBook, deleteBook, getAuthors };

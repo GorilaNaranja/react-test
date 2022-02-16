@@ -7,14 +7,26 @@ const Books = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const getAllBooks = async () => {
-      const response = await getBooks();
-      console.log('Books: ', response);
-      setBooks(response);
-    };
-
     getAllBooks();
   }, []);
+
+  const getAllBooks = async () => {
+    const response = await getBooks();
+    console.log('Books: ', response);
+    setBooks(response);
+  };
+
+  const createBook = async (book) => {
+    const response = await createBook(book);
+    console.log('Books: ', response);
+    // setBooks(response);
+  };
+
+  const deleteBook = async (id) => {
+    const response = await deleteBook(id);
+    console.log('Books: ', response);
+    // setBooks(response);
+  };
 
   return (
     <div className='container h-100'>

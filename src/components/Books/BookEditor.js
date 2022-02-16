@@ -1,29 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { createBook } from '../../services/api-books';
+import { getBookById, getAuthors } from '../../services/api-books';
+import { useParams } from "react-router";
 
-const BookEditor = () => {
-  //   const { _id } = useParams();
-  //   const history = useHistory();
+const BookEditor = ({ title }) => {
+  const { _id } = useParams();
+  // const history = useHistory();
 
-  //   const [book, setBook] = useState({});
-
-  //   useEffect(() => {
-  //     const getBook = async () => {
-  //       const book = await getBookById(_id);
-  //       setBook(book);
-  //     };
-
-  //     getBook();
-  //   }, []);
-
+  const [book, setBook] = useState({});
+  const [authors, setAuthors] = useState([]);
   const [bookInfo, setBookInfo] = useState({
-    author: '',
-    name: '',
-    description: '',
-    date: '',
-    imageUrl: '',
+    authorId: '', name: '', description: '', date: '', imageUrl: '',
   });
+
+  useEffect(() => {
+    getBook();
+    getAllAuthors();
+  }, []);
+
+  const getBook = async () => {
+    setBook(await getBookById(_id));
+  };
+
+  const getAllAuthors = async () => {
+    setAuthors(await getAuthors());
+  };
 
   const onChange = (e) => {
     setBookInfo({ ...bookInfo, [e.target.id]: e.target.value });
@@ -37,18 +39,28 @@ const BookEditor = () => {
 
   return (
     <div className='container'>
-      <h5>Create New Book</h5>
-      {JSON.stringify(bookInfo)}
+      <h5>{title}</h5>
+
+      {authors.map((author) => {
+        <p>{JSON.stringify(author)}</p>
+      })}
 
       <form>
+        <select className="form-select">
+          <option defaultValue value="3">Authors</option>
+          {authors.map((author) => {
+            <option value={author.id}>{author.firstName}</option>
+          })}
+        </select>
+
         <div className='form-group'>
           <label>Author</label>
           <input
-            id='author'
+            id='authorId'
             type='text'
             className='form-control'
-            placeholder='author'
-            value={bookInfo.author}
+            placeholder='author id'
+            value={bookInfo.authorId}
             onChange={onChange}
           />
         </div>
@@ -86,10 +98,10 @@ const BookEditor = () => {
           />
         </div>
         <div className='form-group'>
-          <label for='startDate'>Date</label>
+          <label htmlFor='startDate'>Date</label>
           <input
             id='date'
-            class='form-control'
+            className='form-control'
             type='date'
             value={bookInfo.date}
             onChange={onChange}
